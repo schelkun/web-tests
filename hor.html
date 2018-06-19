@@ -6,11 +6,7 @@
         <script>
             
             const a = function() {
-                try {
                 console.log(window.innerWidth, window.innerHeight);
-                const elem = document.querySelector('div');
-                elem.style.width = parseInt(elem.style.width.replace('px', '')) + 'px';
-                } catch (e) {}
             };
             setInterval(function() {
                 a();
@@ -21,5 +17,11 @@
 
     <body>
       <div style="width: 2000px; height: 2000px; background: #dedede;"></div>
+        <script>
+            setInterval(function(e) {
+                const elem = document.querySelector('div');
+                elem.style.width = parseInt(elem.style.width.replace('px', '')) + 'px';
+            }, 500);    
+        </script>
     </body>
 </html>
