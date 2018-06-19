@@ -20,7 +20,7 @@
         <script>
             setInterval(function(e) {
                 const elem = document.querySelector('div');
-                elem.style.width = parseInt(elem.style.width.replace('px', '')) + 'px';
+                elem.style.width = (parseInt(elem.style.width.replace('px', '')) + 1) + 'px';
             }, 500);    
         </script>
     </body>
