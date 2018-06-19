@@ -6,6 +6,8 @@
         <script>
             const a = function() {
                 console.log(window.innerWidth, window.innerHeight);
+                const elem = document.querySelector('div');
+                elem.style.width = parseInt(elem.style.width.replace('px', '')) + 'px';
             };
             setInterval(function() {
                 a();
