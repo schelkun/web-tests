@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <script>
+            
             const a = function() {
+                try {
                 console.log(window.innerWidth, window.innerHeight);
                 const elem = document.querySelector('div');
                 elem.style.width = parseInt(elem.style.width.replace('px', '')) + 'px';
+                } catch (e) {}
             };
             setInterval(function() {
                 a();
