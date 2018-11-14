@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Random elements</title>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            .container {
+                width: 1920px;
+                height: 8000px;
+                background: #888888;
+            }
+
+            .block {
+                background: #a11bfa;
+                width: 50px;
+                height: 50px;
+                position: absolute;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container"></div>
+
+        <script>
+            (() => {
+                const container = document.querySelector('.container');
+                for (let i = 0; i < 100; i++) {
+                    let block = document.createElement('div');
+                    block.className = 'block';
+                    block.id = `block-${i}`;
+
+                    block.style.top = (Math.floor(Math.random() * 7500) + 1) + 'px';
+                    block.style.left = (Math.floor(Math.random() * 1800) + 1) + 'px';
+
+                    block = container.appendChild(block);
+
+                    block.addEventListener('click', (e) => {
+                        e.target.style.backgroundColor = '#ff00dd';
+                    });
+                }
+            })();
+        </script>
+    </body>
+</html>
