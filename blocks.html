@@ -18,8 +18,6 @@
 
             .block {
                 background: #a11bfa;
-                width: 50px;
-                height: 50px;
                 position: absolute;
             }
         </style>
@@ -31,19 +29,46 @@
         <script>
             (() => {
                 const container = document.querySelector('.container');
-                for (let i = 0; i < 100; i++) {
+                let created = 0;
+                const boxes = [];
+
+                while (created <= 100) {
+                    const pos = [
+                        Math.floor(Math.random() * 7500) + 1,
+                        Math.floor(Math.random() * 1800) + 1
+                    ];
+
+                    const size = [
+                        Math.floor(Math.random() * 50) + 10,
+                        Math.floor(Math.random() * 50) + 10 
+                    ];
+
+                    for (let box of boxes) {
+                        if (pos[0] >= box[0][0] && pos[0] <= box[0][0] + box[1][0])
+                            continue;
+
+                        if (pos[1] >= box[0][1] && pos[1] <= box[0][1] + box[1][1])
+                            continue;
+                    }
+
+                    boxes.push([pos, size]);
+
                     let block = document.createElement('div');
                     block.className = 'block';
-                    block.id = `block-${i}`;
+                    block.id = `block-${created + 1}`;
 
-                    block.style.top = (Math.floor(Math.random() * 7500) + 1) + 'px';
-                    block.style.left = (Math.floor(Math.random() * 1800) + 1) + 'px';
+                    block.style.left = pos[1] + 'px';
+                    block.style.top = pos[0] + 'px';
+                    block.style.width = size[0] + 'px';
+                    block.style.height = size[1] + 'px';
 
                     block = container.appendChild(block);
 
                     block.addEventListener('click', (e) => {
                         e.target.style.backgroundColor = '#ff00dd';
                     });
+
+                    created++;
                 }
             })();
         </script>
